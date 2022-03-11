@@ -4,6 +4,7 @@ const likedPostsId = [];
 const reportedPostsId = [];
 
 const getLikedPosts = () => {
+  console.log(likedPostsId)
     return posts.filter((post) => likedPostsId.includes(post.id));
 };
 
@@ -17,9 +18,12 @@ const isLiked = (id) => {
 };
 
 const addToLiked = (id) => {
-  console.log(id)
+
     likedPostsId.push(id);
+  console.log(id)
+  console.log(likedPostsId)
     showPosts(posts);
+  
 };
 
 const reportPost = (id) => {
@@ -87,8 +91,8 @@ const createPost = (post) => {
 
               <div class="post__footer">
                 <div class="post__buttons">
-                  <button class="post__button" onclick="addToLiked('${post.id}')">
-                  <i class="fa-solid fa-heart onclick=" ${isLiked(post.id) && "text-danger"}"></i>
+                  <button class="post__button" onclick="addToLiked(${post.id})">
+                  <i class="fa-solid fa-heart  ${isLiked(post.id) && "text-danger"}"></i>
                  
                     
                   </button>
@@ -150,6 +154,7 @@ const showPosts = (posts) => {
 
 const displayLikedPosts = () => {
     const likedPosts = getLikedPosts();
+    console.log(likedPosts)
     likedPosts.forEach((post) => {
         const div = createPost(post);
         document.getElementById( "liked" ).appendChild(div);
